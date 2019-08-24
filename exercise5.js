@@ -4,11 +4,11 @@ function kaliTerusRekursif(angka) {
     if(ubah.length <= 1){
       return ubah
   }
-  else{
-      for (i=0; i<ubah.length; i++){
-        hasil = hasil * Number(ubah[i])
-      }
-  } 
+    else{
+        for (i=0; i<ubah.length; i++){
+            hasil = hasil * Number(ubah[i])
+        }
+    } 
 return kaliTerusRekursif(hasil)
   }
   
