@@ -1,61 +1,58 @@
-function changeVocals (str) {
-    var kamus = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    var ganti = ''
-    for (var i = 0; i<str.length; i++){
-        var inKamus = false
-        for (var j = 0; j<kamus.length; j++){
-            if((str[i] === 'a' || str[i] === 'i' || str[i] === 'u' || str[i] === 'e'|| str[i] === 'o'
-                || str[i] === 'A' || str[i] === 'I' || str[i] === 'U' || str[i] === 'E'|| str[i] === 'O') && str[i] === kamus[j]){
-                ganti = ganti + kamus[j+1]
-                inKamus = true
+function changeVocals(str) {
+    let kamus = 'abijuvefopABIJUVEFOP'
+    let hasil = ''
+    for (let i = 0; i < str.length; i++) {
+        let val = false
+        for (let j = 0; j < kamus.length; j++) {
+            if (str[i] === kamus[j] && j % 2 === 0) {
+                hasil += kamus[j + 1]
+                val = true
             }
         }
-        if (!inKamus) {
-            ganti = ganti + str[i]
+        if (val === false) {
+            hasil += str[i]
         }
     }
-    return ganti
-} 
-function reverseWord (str1) {
-    var balik = ''
-    for (var i = str1.length-1; i>=0; i--){
-        balik = balik + str1[i]
-    }
-    return balik
+    return hasil
 }
-function setLowerUpperCase (str2) {
-    var besarKecil = ''
-    for (var i = 0; i<str2.length; i++){
-        if(str2[i] === str2[i].toUpperCase()){
-            besarKecil = besarKecil + str2[i].toLowerCase()
-        }        
-        else if(str2[i] === str2[i].toLowerCase()){
-            besarKecil = besarKecil + str2[i].toUpperCase()
-        }
+
+function reverseWord(str) {
+    let hasil = ''
+    for (let i = str.length - 1; i >= 0; i--) {
+        hasil += str[i]
     }
-    return besarKecil
-}    
-function removeSpaces (str3) {
-    var hilang = ''
-    for(var i=0; i<str3.length; i++){
-        if (str3[i] == ' '){
-            hilang = hilang + ''
-        }
-        else{
-            hilang = hilang + str3[i]
-        }
-    }
-    return hilang
+    return hasil
 }
-function passwordGenerator (name) {
-    if (name.length<5){
-        return 'Minimal karakter yang diinputkan adalah 5 karakter'
+
+function setLowerUpperCase(str) {
+    let hasil = ''
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === str[i].toLowerCase()) {
+            hasil += str[i].toUpperCase()
+        } else if (str[i] === str[i].toUpperCase()) {
+            hasil += str[i].toLowerCase()
+        } else {
+            hasil += str[i]
+        }
     }
-    var diganti = changeVocals(name);
-    var dibalik =  reverseWord(diganti);
-    var dikapital = setLowerUpperCase(dibalik);
-    var dihilang = removeSpaces(dikapital)
-    return dihilang
+    return hasil
+}
+
+function removeSpaces(str) {
+    return str
+        .split(' ')
+        .join('')
+}
+
+function passwordGenerator(name) {
+    if (name.length < 5) {
+        return `Minimal karakter yang diinputkan adalah 5 karakter`
+    }
+    let vokal = changeVocals(name)
+    let balik = reverseWord(vokal)
+    let kapital = setLowerUpperCase(balik)
+    let spasi = removeSpaces(kapital)
+    return spasi
 } 
   console.log(passwordGenerator('Sergei Dragunov')); // 'VPNVGBRdJFGRFs'
   console.log(passwordGenerator('Dimitri Wahyudiputra')); // 'BRTVPJDVYHBwJRTJMJd'
