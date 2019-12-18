@@ -1,16 +1,15 @@
 function kaliTerusRekursif(angka) {
-  var ubah = String(angka)
-  var hasil = 1
-    if(ubah.length <= 1){
+  let ubah = angka.toString()
+  let hasil = 1
+  if (ubah.length === 1) {
       return ubah
+  } else {
+      for (let i = 0; i < ubah.length; i++) {
+          hasil *= ubah[i]
+      }
+      return kaliTerusRekursif(String(hasil))
   }
-    else{
-        for (i=0; i<ubah.length; i++){
-            hasil = hasil * Number(ubah[i])
-        }
-    } 
-return kaliTerusRekursif(hasil)
-  }
+}
   
   // TEST CASES
   console.log(kaliTerusRekursif(66)); // 8
