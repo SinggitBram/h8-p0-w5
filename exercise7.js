@@ -1,24 +1,23 @@
-function meleeRangedGrouping (str) {
-    var pisah1 = str.split(',')
-    var kumpulan = []
-    var hasil = [[],[]]
-    if (!str){
+function meleeRangedGrouping(str) {
+    let hasil = [[], []]
+    let pisah = str.split(',')
+    let pisah2 = []
+    for (let i = 0; i < pisah.length; i++) {
+        pisah2.push(pisah[i].split('-'))
+    }
+    for (let j = 0; j < pisah2.length; j++) {
+        if (pisah2[j][1] === 'Ranged') {
+            hasil[0].push(pisah2[j][0])
+        } else if (pisah2[j][1] === 'Melee') {
+            hasil[1].push(pisah2[j][0])
+        }
+    }
+    if (str.length === 0) {
         return []
-    }
-    for (var i = 0; i < pisah1.length; i++){
-        var pisah2 = pisah1[i].split('-')
-        kumpulan.push(pisah2)
-    }
-    for (var j=0; j < kumpulan.length; j++){
-        if (kumpulan[j][1] === 'Ranged'){
-            hasil[0].push(kumpulan[j][0])
-        }
-        else{
-            hasil[1].push(kumpulan[j][0])
-        }
     }
     return hasil
 }
+
   
   // TEST CASE
   

@@ -1,11 +1,11 @@
-function attack (damage) {
+function attack(damage) {
     return damage - 2
-  }
+}
   
-function damageCalculation (numberOfAttacks, damagePerAttack) {
-    var damage = numberOfAttacks * attack(damagePerAttack)
-    return damage
-  }
+function damageCalculation(numberOfAttacks, damagePerAttack) {
+    let hasil = attack(damagePerAttack)
+    return hasil * numberOfAttacks
+}
   
   // TEST CASE
   console.log(damageCalculation(9, 25)); // 207
