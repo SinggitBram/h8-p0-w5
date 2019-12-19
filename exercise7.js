@@ -18,7 +18,6 @@ function meleeRangedGrouping(str) {
     return hasil
 }
 
-  
   // TEST CASE
   
   console.log(meleeRangedGrouping('Razor-Ranged,Invoker-Ranged,Meepo-Melee,Axe-Melee,Sniper-Ranged'));
